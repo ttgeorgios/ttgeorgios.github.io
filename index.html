@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="style.css">
+<title>Reputation Game</title>
+</head>
+<body>
+    <div id="mySidebar" class="sidebar">
+        <h2>The Reputation Game Rules</h2>
+        <p>There are two firms (i = 1,2).In period 1, both firms are in the market, 
+            Only firm 1 (the “incumbent”) fakes an action a1. The action space has two elements: 
+            “prey” and “accommodate.” Firm 2 (the “entrant”) has potential profit D2, if firm 1 accommodates and P2, 
+            if firm 1 preys, with D2 > 0 > P2. Firm 1 has one of two potential types: “sane” and “crazy.” A sane firm 
+            1 makes D1, when it accommodates and P1 when it preys, where D1 > P1. Thus, a sane firm prefers to accommodate rather than to prey. 
+            However, it would prefer to be a monopoly, in which case it would make M1 > D1 per period. When crazy, firm 1 enjoys predation and thus 
+            preys (its utility function is such that it is always worth preying). Let p (respectively, 1 — p) denote the prior probability that firm 1 is sane 
+            (respectively, crazy). </p>
+
+            <p>In period 2, only firm 2 chooses an action a2. 
+                This action can take two values: “stay” and “exit.” If firm 2 stays, it obtains payoff D2, if 
+                firm 1 is actually sane and P2, if it is crazy; if firm 2 exits, it obtains payoff 0. The idea is that, 
+                unless it is crazy, firm 1 will not prey in the second period, because there is no point to building or keeping 
+                a reputation at the end. (This assumption can be derived more formally from the description of the second-period competition.) 
+                The sane firm gets D1, if firm 2 stays and M1, if firm 2 exits.</p>
+            
+            <p>We presumed that the crazy type always preys. The interesting thing to study is thus the sane type’s behavior. From a static point of view, 
+                it would want to accommodate in the first period; however, by preying it might convince firm 2 that it is of the crazy type, and thus induce 
+                exit (as 0 > P2) and increase its second period profit.</p>
+      </div>
+    <div id="main">
+        <button class="openbtn" onclick="shiftNav()">☰ Info</button>
+        <h1>Reputation Game</h1>
+
+        <form id="gameform" action="index.html">
+            <div id="firmdiv">
+                <div id="sender">
+                    <h3>Incumbent Firm</h3>
+                    <label for="m1">M1:</label><br>
+                    <input type="number" id="m1" name="m1" min="1" max="999" required="required"><br>
+                    <label for="d1">D1:</label><br>
+                    <input type="number" id="d1" name="d1" min="1" max="999" required="required"><br>
+                    <label for="p1">P1:</label><br>
+                    <input type="number" id="p1" name="p1" min="1" max="999" required="required"><br>
+                    <label for="x">X:</label><br>
+                    <input type="number" id="x" name="x" min="1" max="999" required="required"><br>
+
+                    <p>Sanity:</p>
+                    <input type="radio" id="sane" name="sanity" value="sane" checked="checked">
+                    <label for="sane">Sane</label><br>
+                    <input type="radio" id="crazy" name="sanity" value="crazy">
+                    <label for="crazy">Crazy</label><br><br>
+                </div>
+                <div id="receiver">
+                    <h3>Entrant Firm</h3>
+                    <label for="d2">D2:</label><br>
+                    <input type="number" id="d2" name="d2" min="1" max="999" required="required"><br>
+                    <label for="p2">P2:</label><br>
+                    <input type="number" id="p2" name="p2" min="-999" max="-1" required="required"><br><br>
+                    <label for="probability">Sanity Probability:</label><br>
+                    <div class="slidecontainer">
+                        <p id="sane">Sane <span id="saneprob">50</span>%<p>
+                        <input type="range" id="probSlider" name="probability" min="0" max="100" value="50" class="slider">
+                        <p id="crazy">Crazy <span id="crazyprob">50</span>%<p>
+                    </div>
+                    <table class="gametable">
+                        <tbody><tr>
+                        <th id="info"><div id="R"> Receiver</div><div id="S">Sender </div></th>
+                        <th>Stay</th>
+                        <th>Exit
+                        </th></tr>
+                        <tr>
+                        <td>Sane, Prey</td>
+                        <td id="sanePreyStay">P1+P1, D2</td>
+                        <td id="sanePreyExit">P1+M1, 0
+                        </td></tr>
+                        <tr>
+                        <td>Sane, Accommodate</td>
+                        <td id="saneAccStay">D1+D1, D2</td>
+                        <td id="saneAccExit">D1+M1, 0
+                        </td></tr>
+                        <tr>
+                        <td>Crazy, Prey</td>
+                        <td id="crazyStay">X,    P2</td>
+                        <td id="crazyExit">X,    0
+                        </td>
+                        </tr></tbody>
+                    </table>
+                    <table class="gametable" id="originalTable">
+                        <tbody><tr>
+                        <th id="info"><div id="R"> Receiver</div><div id="S">Sender </div></th>
+                        <th>Stay</th>
+                        <th>Exit
+                        </th></tr>
+                        <tr>
+                        <td>Sane, Prey</td>
+                        <td id="sanePreyStay">P1+P1, D2</td>
+                        <td id="sanePreyExit">P1+M1, 0
+                        </td></tr>
+                        <tr>
+                        <td>Sane, Accommodate</td>
+                        <td id="saneAccStay">D1+D1, D2</td>
+                        <td id="saneAccExit">D1+M1, 0
+                        </td></tr>
+                        <tr>
+                        <td>Crazy, Prey</td>
+                        <td id="crazyStay">X,    P2</td>
+                        <td id="crazyExit">X,    0
+                        </td>
+                        </tr></tbody>
+                    </table>
+                    <button type="button" id="showTable">Show Payoff Formulas</button>
+                </div><br>
+                <div id=board>
+                    <img src="queen.png" id="queen" alt="Incumbent Firm">
+                    <img src="placeholder.png" id="message" class="message" alt="Message">
+                    <img src="pawn.png" id="pawn" alt="Entrant Firm">
+                </div>
+            </div>
+            <div id="buttondiv">
+                <input type="button" id="submit" value="Start">
+            </div>
+        </form>
+    </div>
+
+
+    <script src="slider.js"></script>
+</body>
+</html>
