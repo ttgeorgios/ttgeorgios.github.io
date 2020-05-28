@@ -134,6 +134,7 @@ table, th, td {
 .gametable {
     margin-top: 2rem;
     width: 350px;
+    font-family: sans-serif;
 }
 
 #submit{
