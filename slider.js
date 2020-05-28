@@ -213,6 +213,7 @@ submit.onclick = function(){
       } else {
         pmean = -(Number(p2.value)) / ((Number(d2.value) - Number(p2.value)));
         ymean = (pmean * (Number(sanityProb.value)/100) - pmean) / (pmean * (Number(sanityProb.value)/100) - (Number(sanityProb.value)/100));
+        console.clear();
         console.log("The incumbent preys with probability -> y_mean = (p_mean * p - p_mean) / (p_mean * p - p)", ymean);
         console.log("Where -> p_mean = p2 / (d2 - p2)", pmean);
         var actionS = 2;
