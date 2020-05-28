@@ -1,14 +1,33 @@
 p {
     color: white;
+    font-family: 'Chakra Petch', sans-serif;
 }
 
 h1 {
     color: white;
     text-align: center;
+    font-family: 'Chakra Petch', sans-serif;
+}
+
+label {
+  font-family: 'Chakra Petch', sans-serif;
+}
+
+input {
+  font-family: 'Chakra Petch', sans-serif;
+}
+
+button {
+  font-family: 'Chakra Petch', sans-serif;
+}
+
+h2 {
+  font-family: 'Chakra Petch', sans-serif;
 }
 
 h3 {
     color: white;
+    font-family: 'Chakra Petch', sans-serif;
 }
 
 label {
@@ -126,14 +145,14 @@ table, th, td {
     text-decoration: none;
     display: inline-block;
     border-radius: 10px;
-    font-size: 16px;
+    font-size: 24px;
     margin: 4px 2px;
     margin-top: 2rem;
     margin-right: 8px;
     cursor: pointer;
     -webkit-transition-duration: 0.4s; /* Safari */
     transition-duration: 0.4s;
-    width: 50%;
+    width: 40%;
     outline: none;
   }
 
